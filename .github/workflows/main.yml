@@ -1,0 +1,34 @@
+name: test
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: log build
+        run: |
+          echo "build start"
+          echo "build end"
+
+  deploy:
+    needs: build
+    name: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: log deploy
+        uses: appleboy/ssh-action@master
+        with:
+          key: ${{ secrets.GAMMOA1_SSH_KEY }}
+          host: ${{ secrets.GAMMOA1_HOST }}
+          username: ${{ secrets.GAMMOA1_USERNAME }}
+          port: ${{ secrets.GAMMOA1_PORT }}
+          script: |
+            cd /home/ubuntu/server
+            echo "deploy start"
+            echo "deploy end"          
