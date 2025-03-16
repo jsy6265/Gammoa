@@ -18,11 +18,16 @@ bin/
 !**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-back/.idea
-back/*.iws
-back/*.iml
-back/*.ipr
-back/out/
+.idea
+*.iws
+*.iml
+*.ipr
+/out/
+.idea
+*.iws
+*.iml
+*.ipr
+out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 
