@@ -6,8 +6,10 @@ import com.bitc.fullstack405.securitytest.database.entity.UserEntity;
 import com.bitc.fullstack405.securitytest.database.repository.UserRepository;
 import com.bitc.fullstack405.securitytest.utill.JwtProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 // 회원가입, 로그인, 토큰 발급 처리 서비스
 @Service

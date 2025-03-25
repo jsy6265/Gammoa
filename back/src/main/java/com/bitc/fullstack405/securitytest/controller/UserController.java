@@ -16,10 +16,6 @@ public class UserController {
   private final UserRepository userRepository;
   private final UserService userService;
 
-  @PutMapping("/{id}")
-  public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody UserUpdateRequest req) throws BadRequestException {
-    UserResponse updateUser = userService.updateUser(id, req);
-    return ResponseEntity.ok(updateUser);
-  }
+
 
 }

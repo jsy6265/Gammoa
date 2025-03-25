@@ -32,7 +32,11 @@ spring:
     init:
       mode: always
 
-
+  data:
+    redis:
+      host: localhost
+      timeout: 2000
+      port: 6379
 
 
 

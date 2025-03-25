@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32df8dbf-167a-40e0-a146-24bdf29a5c41" name="변경" comment="" />
+    <list default="true" id="32df8dbf-167a-40e0-a146-24bdf29a5c41" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +38,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -47,9 +50,7 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/back" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-  </component>
-  <component name="PerforceDirect.Settings">
-    <option name="CHARSET" value="없음" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -79,11 +80,17 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "preferences.editor",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bitc.fullstack405.securitytest.handler" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\fullstack405\gammoa\back" />
     </key>
@@ -123,7 +130,11 @@
       <workItem from="1742102681440" duration="272000" />
       <workItem from="1742102961105" duration="43000" />
       <workItem from="1742103015396" duration="215000" />
-      <workItem from="1742103243211" duration="13130000" />
+      <workItem from="1742103243211" duration="13344000" />
+      <workItem from="1742116925083" duration="497000" />
+      <workItem from="1742117459821" duration="386000" />
+      <workItem from="1742790356493" duration="12797000" />
+      <workItem from="1742887536136" duration="831000" />
     </task>
     <servers />
   </component>
@@ -135,10 +146,26 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feature/login" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

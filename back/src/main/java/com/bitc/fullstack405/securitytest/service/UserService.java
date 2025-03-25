@@ -6,6 +6,7 @@ import com.bitc.fullstack405.securitytest.database.entity.UserEntity;
 import com.bitc.fullstack405.securitytest.database.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -42,4 +43,6 @@ public class UserService {
 
     return UserResponse.updateUser(currentUser);
   }
+
+
 }
