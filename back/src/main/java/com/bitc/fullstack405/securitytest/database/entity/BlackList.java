@@ -13,8 +13,6 @@ import java.util.concurrent.TimeUnit;
 public class BlackList {
 
   @Id
-  private Integer id;
-
   private String accessToken;
 
   @TimeToLive(unit = TimeUnit.MILLISECONDS)
@@ -22,7 +20,6 @@ public class BlackList {
 
   @Builder
   private BlackList(Integer id, String accessToken, Long expiration) {
-    this.id = id;
     this.accessToken = accessToken;
     this.expiration = expiration;
   }

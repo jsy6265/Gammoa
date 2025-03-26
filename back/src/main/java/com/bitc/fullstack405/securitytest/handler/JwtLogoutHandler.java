@@ -1,6 +1,7 @@
 package com.bitc.fullstack405.securitytest.handler;
 
 import com.bitc.fullstack405.securitytest.database.entity.BlackList;
+import com.bitc.fullstack405.securitytest.service.LogoutService;
 import com.bitc.fullstack405.securitytest.utill.JwtProvider;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,24 +24,13 @@ public class JwtLogoutHandler implements LogoutHandler {
   private JwtProvider jwtProvider;
   @Autowired
   private BlackListRepository blackListRepository;
+  @Autowired
+  private LogoutService logoutService;
 
   @Override
   public void logout(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
     String accessToken = extractToken(request);
-
-    if (accessToken != null && jwtProvider.validateToken(accessToken)) {
-      // accessToken Redis에 블랙리스트로 등록
-      long accessTokenExpiration = jwtProvider.getExpiration(accessToken);
-
-      // 블랙리스트 객체 생성 후 redis 저장
-      BlackList blackList = BlackList.builder()
-          .accessToken(accessToken)
-          .expiration(accessTokenExpiration)
-          .build();
-      blackListRepository.save(blackList);
-
-      destroyRefreshToken(response);
-    }
+    logoutService.logout(accessToken,response);
   }
 
   private String extractToken(HttpServletRequest request) {
@@ -49,19 +39,5 @@ public class JwtLogoutHandler implements LogoutHandler {
       return header.substring(7);
     }
     return null;
-  }
-
-  // 쿠키에 있는 리프레시 토큰 값 제거
-  private void destroyRefreshToken(HttpServletResponse response) {
-
-    ResponseCookie cookie = ResponseCookie.from("refreshToken", "")
-        .maxAge(0)
-        .path("/")
-        .secure(true)
-        .sameSite("None")
-        .httpOnly(true)
-        .build();
-
-    response.setHeader("Set-Cookie", cookie.toString());
   }
 }

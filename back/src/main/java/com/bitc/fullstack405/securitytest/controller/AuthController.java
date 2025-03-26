@@ -4,7 +4,6 @@ import com.bitc.fullstack405.securitytest.database.dto.*;
 import com.bitc.fullstack405.securitytest.database.entity.UserEntity;
 import com.bitc.fullstack405.securitytest.database.repository.UserRepository;
 import com.bitc.fullstack405.securitytest.service.AuthService;
-import com.bitc.fullstack405.securitytest.service.UserService;
 import com.bitc.fullstack405.securitytest.utill.JwtProvider;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +27,6 @@ public class AuthController {
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
   private final AuthService authService;
-  private final UserService userService;
   
   // 로그인
   @PostMapping("/login")
@@ -85,12 +83,18 @@ public class AuthController {
   }
 
   // 회원정보 수정
-  @PutMapping("/{id}")
-  public ResponseEntity<UserResponse> updateUser(@PathVariable Long id, @RequestBody UserUpdateRequest req) throws BadRequestException {
-    UserResponse updateUser = userService.updateUser(id, req);
+  @PutMapping("/{username}")
+  public ResponseEntity<UserResponse> updateUser(@PathVariable String username, @RequestBody UserUpdateRequest req) throws BadRequestException {
+    UserResponse updateUser = authService.updateUser(username, req);
     return ResponseEntity.ok(updateUser);
   }
 
   // 회원 탈퇴
+  @DeleteMapping("/delete")
+  public ResponseEntity<String> deleteUser( @RequestHeader("Authorization") String token, HttpServletResponse response){
+    String accessToken = token.substring(7); // "Bearer " 제거
+    String username = jwtProvider.getUsernameFromToken(accessToken);
 
+    return authService.deleteUser(username, accessToken,response);
+  }
 }

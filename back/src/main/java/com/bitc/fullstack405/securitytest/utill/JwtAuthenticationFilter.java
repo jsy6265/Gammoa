@@ -37,6 +37,14 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     String token = resolveToken(request);
 
+    // 로그인 헤더에 토큰 없으므로 블랙리스트 체크 X
+    if(token == null){
+      chain.doFilter(request, response);
+      return;
+    }
+
+
+    // 로그인 후 유저 정보 조회할 때 토큰 확인
     // 블랙리스트 확인
     if (blackListRepository.findByAccessToken(token).isPresent()) {
       System.out.println("블랙리스트된 토큰입니다! 요청을 차단합니다.");
